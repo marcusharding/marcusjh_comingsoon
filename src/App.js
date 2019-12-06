@@ -2,7 +2,7 @@ import React from 'react';
 import './app.scss';
 import './fonts/fonts.css';
 import $ from 'jquery';
-import { TweenMax } from 'gsap';
+import { TweenMax } from 'gsap/dist/gsap';
 import { Icon } from 'semantic-ui-react';
 import './loader.css';
 
@@ -42,7 +42,7 @@ class App extends React.Component {
         </section>
         <div className="rebuildContainer">
             <p className="text" data-speed="0">Currently undergoing a rebuild</p>
-            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
         </div>
 	    </div>
         
