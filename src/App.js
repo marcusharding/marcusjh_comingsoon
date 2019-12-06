@@ -63,7 +63,7 @@ class App extends React.Component {
     return (
 
       <React.Fragment>
-        <div id="spinnerContainer" className={SpinnerHandler}>
+        <div className={SpinnerHandler}>
           <Spinner />
         </div>
         
