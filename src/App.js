@@ -3,10 +3,28 @@ import './app.scss';
 import './fonts/fonts.css';
 import $ from 'jquery';
 import { TweenMax } from 'gsap/dist/gsap';
-import { Icon } from 'semantic-ui-react';
 import './loader.css';
+import BackgroundImg from './img/png/minified/bg.png';
+import Background from './components/Background';
+import MountainsImg from './img/png/minified/mountains.png';
+import Mountains from './components/Mountains';
+import TreesImg from './img/png/minified/trees.png';
+import Trees from './components/Trees';
+import BackgroundImageOnLoad from 'background-image-on-load';
+import Spinner from './components/spinner';
+
+
+
+
 
 class App extends React.Component {
+
+  // Setting state to false
+  state = {
+    bgIsLoaded: false
+  };
+
+  // JQUERY Parallax hover effect for the header
   componentDidMount(){
 		$('html').mousemove(function(e){
 		
@@ -31,20 +49,54 @@ class App extends React.Component {
 		});
 	}
   render() {
+    // Setting a constant variable for the state
+    const { bgIsLoaded } = this.state;
+    // creating a variable to adjust wether spinner is shown or not
+    var SpinnerHandler = '';
+
+    // conditional statement to check wether the state has been updated from the image load
+    if((this.state.bgIsLoaded === true)) {
+      SpinnerHandler = 'hidden'
+    } else {
+      SpinnerHandler = ''
+    };
     return (
-      <div id="container">
-        <section id="wrapper">
-          <div className="p1" data-speed="0.01" data-revert="true"></div>
-          <div className="p2" data-speed="0.02"></div>
-          <div className="p3" data-speed="0.01"></div>
-            <p className="heading text-bold" data-speed="0">Bespoke websites</p>
-            <p className="subheading text-light" data-speed="0">Freelance web developer and mentor</p>
-        </section>
-        <div className="rebuildContainer">
-            <p className="text" data-speed="0">Currently undergoing a rebuild</p>
-            <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+
+      <React.Fragment>
+        <div id="spinnerContainer" className={SpinnerHandler}>
+          <Spinner />
         </div>
-	    </div>
+        
+        <div id="container">
+          <section id="wrapper">
+            <Background
+              src={bgIsLoaded ? BackgroundImg : ''}
+            />
+            <Mountains
+              src={bgIsLoaded ? MountainsImg : ''}
+            />
+            <Trees
+              src={bgIsLoaded ? TreesImg : ''}
+            />            
+              <p className="heading text-bold" data-speed="0">Bespoke websites</p>
+              <p className="subheading text-light" data-speed="0">Freelance web developer and mentor</p>
+          </section>
+          <div className="rebuildContainer">
+              <p className="text" data-speed="0">Currently undergoing a rebuild</p>
+              <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+          </div>
+        </div>
+
+        {/* Using the import to set a src image to be checked for load | adjusting state once loaded */}
+        <BackgroundImageOnLoad
+            src={BackgroundImg}
+            onLoadBg={() =>
+              this.setState({
+              bgIsLoaded: true
+            })}
+            onError={err => console.log('error', err)}
+          />
+        </React.Fragment>
         
     );
   }

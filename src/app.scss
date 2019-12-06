@@ -60,28 +60,25 @@ body {
 	}
 }
 
-.p1{
+.background{
 	width: 105%;
 	height: 105%;
 	z-index: 0;
-	background-image: url('./img/png/minified/bg.png');
 	left: 0;
 	top: -5%;
 	opacity: 0.75;
 }
-.p2{
+.mountains{
 	width: 130%;
 	height: 100%;
 	z-index: 2;
-	background-image: url('./img/png/minified/mountains.png');
 	top: 8%;
 	left: -13%;
 }
-.p3{
+.trees{
 	width: 100%;
 	height: 100%;
 	z-index: 4;
-	background-image: url('./img/png/minified/trees.png');
 	top: 0;
 	left: 0;
 }
