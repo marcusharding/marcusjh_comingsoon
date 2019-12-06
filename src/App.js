@@ -89,7 +89,7 @@ class App extends React.Component {
 
         {/* Using the import to set a src image to be checked for load | adjusting state once loaded */}
         <BackgroundImageOnLoad
-            src={MountainsImg}
+            src={BackgroundImg}
             onLoadBg={() =>
               this.setState({
               bgIsLoaded: true
