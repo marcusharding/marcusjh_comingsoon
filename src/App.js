@@ -70,13 +70,13 @@ class App extends React.Component {
         <div id="container">
           <section id="wrapper">
             <Background
-              src={bgIsLoaded ? BackgroundImg : ''}
+              src={BackgroundImg}
             />
             <Mountains
-              src={bgIsLoaded ? MountainsImg : ''}
+              src={MountainsImg}
             />
             <Trees
-              src={bgIsLoaded ? TreesImg : ''}
+              src={TreesImg}
             />            
               <p className="heading text-bold" data-speed="0">Bespoke websites</p>
               <p className="subheading text-light" data-speed="0">Freelance web developer and mentor</p>
